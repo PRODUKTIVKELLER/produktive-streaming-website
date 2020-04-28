@@ -10,12 +10,15 @@ let hiddenTime = produktiv? 1000 * 60 * 5 : 2000;
 
 let i = 0;
 const heading = document.getElementById('heading');
+const bubbleSound = new Audio('bubble.ogg');
 
 window.addEventListener('load', fadeIn);
 
 function fadeIn() {
     heading.innerText = texts[i];
     heading.classList.add("show");
+
+    bubbleSound.play();
 
     setTimeout(fadeOut, stayTime);
 }
