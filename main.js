@@ -1,16 +1,15 @@
 const texts = [
     'Folge "PRODUKTIVKELLER" auf YouTube - Alle 2 Wochen ein neues Video',
-    'Gefällt dir unser Stream? Dann unterstütze uns über Patreon :) https://www.patreon.com/PRODUKTIVKELLER'
+    'Gefällt dir unser Stream? Dann unterstütze uns auf Patreon: https://www.patreon.com/PRODUKTIVKELLER'
 ];
 
-let produktiv = false;
+let produktiv = window.location.href.indexOf('live') === -1;
 
-let stayTime = produktiv? 1000 * 60 : 2000;
+let stayTime = produktiv? 1000 * 60 : 4000;
 let hiddenTime = produktiv? 1000 * 60 * 10 : 2000;
 
 let i = 0;
 const heading = document.getElementById('heading');
-console.log(heading);
 
 window.addEventListener('load', fadeIn);
 

@@ -11,7 +11,7 @@ h1 {
     color: white;
     text-align: center;
     font-family: 'Exo', sans-serif;
-    background-color: #0f1925;
+    background-color: rgba(15,25,37, 0.9);
 
     transition: opacity 1s;
 }
