@@ -3,7 +3,7 @@ const texts = [
     'Gefällt dir unser Stream? Dann unterstütze uns auf Patreon: https://www.patreon.com/PRODUKTIVKELLER'
 ];
 
-let produktiv = window.location.href.indexOf('live') === -1;
+let produktiv = window.location.href.indexOf('live') !== -1;
 
 let stayTime = produktiv? 1000 * 60 : 4000;
 let hiddenTime = produktiv? 1000 * 60 * 10 : 2000;
