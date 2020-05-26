@@ -11,10 +11,12 @@ body {
 
 
 .show {
+    display: block!important;
     opacity: 1!important;
 }
 
-#heading {
+#heading, #twitter, #email-notification {
+    display: none;
     opacity: 0;
 
     background-color: rgba(15, 25, 37, 0.9);
@@ -36,6 +38,13 @@ h1 {
     color: white;
     text-align: center;
     font-family: 'Exo', sans-serif;
+}
+
+h2 {
+    margin: 0;
+    text-align: center;
+    font-family: 'Exo', sans-serif;
+    color: white;
 }
 
 @keyframes smoke {
@@ -61,19 +70,44 @@ h1 {
     }
 }
 
-
-.produktivkeller {
+.buzzword {
     font-size: 1.1em;
-    letter-spacing: 2px;
     color: #4ecda7;
     font-family: 'League Spartan', sans-serif;
 }
 
-.youtube {
-    color: #FF0000;
-
+.youtube, .twitter {
     font-size: 1.2em;
     margin-left: 10px;
+}
+
+.youtube {
+    color: #FF0000;
+}
+
+.twitter {
+    color: #1DA1F2;
+}
+
+#mail-icon {
+    top: 0;
+    opacity: 0;
+    position: absolute;
+
+    animation:
+            move-in 2s 5s forwards;
+}
+
+@keyframes move-in {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 1;
+    }
+    0% {  transform: translateX(-50px)   }
+    40%   {  transform: translateX(300px) }
+    100% { transform: translateX(100px) }
 }
 
 .typewriter {
@@ -83,21 +117,40 @@ h1 {
     border-right: .35em solid transparent;
     white-space: nowrap;
     margin: 0 auto;
+}
+
+.typewriter-youtube {
     animation:
-            typing 1.5s 2s steps(20, end) forwards,
+            typing-youtube 1.5s 2s steps(20, end) forwards,
             blink-caret 0.9s 2s step-end 4;
 }
 
-h2 {
-    margin: 0;
-    text-align: center;
-    font-family: 'Exo', sans-serif;
-    color: white;
+.typewriter-mailing-list {
+    animation:
+            typing-mailing-list 3s 2s steps(50, end) forwards,
+            blink-caret 0.9s 2s step-end 4;
 }
 
-@keyframes typing {
+.typewriter-twitter {
+    animation:
+            typing-twitter 1.5s 2s steps(25, end) forwards,
+            blink-caret 0.9s 2s step-end 4;
+}
+
+
+@keyframes typing-youtube {
     from { width: 0 }
     to { width: 370px }
+}
+
+@keyframes typing-mailing-list {
+    from { width: 0 }
+    to { width: 870px }
+}
+
+@keyframes typing-twitter {
+    from { width: 0 }
+    to { width: 550px }
 }
 
 @keyframes blink-caret {

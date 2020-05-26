@@ -4,18 +4,22 @@ let stayTime = produktiv? 1000 * 60 : 10000;
 let hiddenTime = produktiv? 1000 * 60 * 5 : 2000;
 
 let heading = document.getElementById('heading');
-const bubbleSound = new Audio('bubble.ogg');
-const keystrokeSound = new Audio('keystroke.wav');
+let notification = document.getElementById('email-notification');
+let twitter = document.getElementById('twitter');
 
-window.addEventListener('load', fadeIn);
+const soundPath = 'lib/sounds/'
 
-function fadeIn() {
+const bubbleSound = new Audio(soundPath +'bubble.ogg');
+const keystrokeSound = new Audio(soundPath + 'keystroke.wav');
+const emailSound = new Audio(soundPath + 'woosh.mp3');
+
+window.addEventListener('load', fadeInTwitter);
+
+function fadeInHeading() {
 
     const headingClone = heading.cloneNode(true);
     heading.parentNode.replaceChild(headingClone, heading);
-
     heading = headingClone;
-
     heading.classList.add("show");
 
     bubbleSound.play();
@@ -24,15 +28,61 @@ function fadeIn() {
         keystrokeSound.play();
     }, 1950);
 
-
-    setTimeout(fadeOut, stayTime);
+    setTimeout(fadeOutHeading, stayTime);
 }
 
-function fadeOut() {
+function fadeOutHeading() {
     heading.classList.remove("show");
 
-    setTimeout(fadeIn, hiddenTime);
+    setTimeout(fadeInEmailNotification, hiddenTime);
 }
 
 
+function fadeInEmailNotification()
+{
+    const notificationClone = notification.cloneNode(true);
+    notification.parentNode.replaceChild(notificationClone, notification);
+    notification = notificationClone;
+    notification.classList.add("show");
 
+    bubbleSound.play();
+
+    setTimeout(function() {
+        keystrokeSound.play();
+    }, 1950);
+
+    setTimeout(function() {
+        emailSound.play();
+    }, 5000);
+
+    setTimeout(fadeOutEmailNotification, stayTime);
+}
+
+function fadeOutEmailNotification() {
+    notification.classList.remove("show");
+
+    setTimeout(fadeInTwitter, hiddenTime);
+}
+
+
+function fadeInTwitter()
+{
+    const twitterClone = twitter.cloneNode(true);
+    twitter.parentNode.replaceChild(twitterClone, twitter);
+    twitter = twitterClone;
+    twitter.classList.add("show");
+
+    bubbleSound.play();
+
+    setTimeout(function() {
+        keystrokeSound.play();
+    }, 1950);
+
+    setTimeout(fadeOutTwitter, stayTime);
+}
+
+function fadeOutTwitter() {
+    twitter.classList.remove("show");
+
+    setTimeout(fadeInHeading, hiddenTime);
+}
