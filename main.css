@@ -15,7 +15,7 @@ body {
     opacity: 1!important;
 }
 
-#heading, #twitter, #email-notification {
+#heading, #discord, #email-notification, #pin-them {
     display: none;
     opacity: 0;
 
@@ -76,7 +76,7 @@ h2 {
     font-family: 'League Spartan', sans-serif;
 }
 
-.youtube, .twitter {
+.youtube, .discord, .pin-them {
     font-size: 1.2em;
     margin-left: 10px;
 }
@@ -85,8 +85,13 @@ h2 {
     color: #FF0000;
 }
 
-.twitter {
-    color: #1DA1F2;
+.discord {
+    color: #5865F2;
+}
+
+.steam {
+    color: white;
+    margin-left: 15px;
 }
 
 #mail-icon {
@@ -131,26 +136,36 @@ h2 {
             blink-caret 0.9s 2s step-end 4;
 }
 
-.typewriter-twitter {
+.typewriter-discord {
     animation:
-            typing-twitter 1.5s 2s steps(25, end) forwards,
+            typing-discord 1.5s 2s steps(25, end) forwards,
             blink-caret 0.9s 2s step-end 4;
 }
 
+.typewriter-pin-them {
+    animation:
+            typing-pin-them 1.5s 2s steps(50, end) forwards,
+            blink-caret 0.9s 2s step-end 4;
+}
 
 @keyframes typing-youtube {
     from { width: 0 }
-    to { width: 370px }
+    to { width: 330px }
 }
 
 @keyframes typing-mailing-list {
     from { width: 0 }
-    to { width: 870px }
+    to { width: 750px }
 }
 
-@keyframes typing-twitter {
+@keyframes typing-discord {
     from { width: 0 }
-    to { width: 550px }
+    to { width: 560px }
+}
+
+@keyframes typing-pin-them {
+    from { width: 0 }
+    to { width: 850px }
 }
 
 @keyframes blink-caret {

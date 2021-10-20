@@ -1,19 +1,42 @@
 let produktiv = window.location.href.indexOf('live') !== -1;
 
-let stayTime = produktiv? 1000 * 60 : 10000;
-let hiddenTime = produktiv? 1000 * 60 * 5 : 2000;
+let stayTime = produktiv ? 1000 * 60 : 10000;
+let hiddenTime = produktiv ? 1000 * 60 * 7 : 2000;
 
 let heading = document.getElementById('heading');
 let notification = document.getElementById('email-notification');
-let twitter = document.getElementById('twitter');
+let discord = document.getElementById('discord');
+let pinThem = document.getElementById('pin-them');
 
 const soundPath = 'lib/sounds/'
 
-const bubbleSound = new Audio(soundPath +'bubble.ogg');
+const bubbleSound = new Audio(soundPath + 'bubble.ogg');
 const keystrokeSound = new Audio(soundPath + 'keystroke.wav');
 const emailSound = new Audio(soundPath + 'woosh.mp3');
 
-window.addEventListener('load', fadeInTwitter);
+window.addEventListener('load', fadeInPinThem);
+
+function fadeInPinThem() {
+    const pinThemClone = pinThem.cloneNode(true);
+    pinThem.parentNode.replaceChild(pinThemClone, pinThem);
+    pinThem = pinThemClone;
+    pinThem.classList.add("show");
+
+    bubbleSound.play();
+
+    setTimeout(function () {
+        keystrokeSound.play();
+    }, 1950);
+
+    setTimeout(fadeOutPinThem, stayTime);
+}
+
+
+function fadeOutPinThem() {
+    pinThem.classList.remove("show");
+
+    setTimeout(fadeInHeading, hiddenTime);
+}
 
 function fadeInHeading() {
 
@@ -24,7 +47,7 @@ function fadeInHeading() {
 
     bubbleSound.play();
 
-    setTimeout(function() {
+    setTimeout(function () {
         keystrokeSound.play();
     }, 1950);
 
@@ -38,8 +61,7 @@ function fadeOutHeading() {
 }
 
 
-function fadeInEmailNotification()
-{
+function fadeInEmailNotification() {
     const notificationClone = notification.cloneNode(true);
     notification.parentNode.replaceChild(notificationClone, notification);
     notification = notificationClone;
@@ -47,11 +69,11 @@ function fadeInEmailNotification()
 
     bubbleSound.play();
 
-    setTimeout(function() {
+    setTimeout(function () {
         keystrokeSound.play();
     }, 1950);
 
-    setTimeout(function() {
+    setTimeout(function () {
         emailSound.play();
     }, 5000);
 
@@ -61,28 +83,27 @@ function fadeInEmailNotification()
 function fadeOutEmailNotification() {
     notification.classList.remove("show");
 
-    setTimeout(fadeInTwitter, hiddenTime);
+    setTimeout(fadeInDiscord, hiddenTime);
 }
 
 
-function fadeInTwitter()
-{
-    const twitterClone = twitter.cloneNode(true);
-    twitter.parentNode.replaceChild(twitterClone, twitter);
-    twitter = twitterClone;
-    twitter.classList.add("show");
+function fadeInDiscord() {
+    const discordClone = discord.cloneNode(true);
+    discord.parentNode.replaceChild(discordClone, discord);
+    discord = discordClone;
+    discord.classList.add("show");
 
     bubbleSound.play();
 
-    setTimeout(function() {
+    setTimeout(function () {
         keystrokeSound.play();
     }, 1950);
 
-    setTimeout(fadeOutTwitter, stayTime);
+    setTimeout(fadeOutDiscord, stayTime);
 }
 
-function fadeOutTwitter() {
-    twitter.classList.remove("show");
+function fadeOutDiscord() {
+    discord.classList.remove("show");
 
-    setTimeout(fadeInHeading, hiddenTime);
+    setTimeout(fadeInPinThem, hiddenTime);
 }
